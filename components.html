@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example</title>
+  <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/css/vendor/reset.css">
+  <link rel="stylesheet" href="assets/css/ui.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+  <script src="assets/js/vendor/jquery-3.6.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+
+  <style>
+    .components-item .example-box {
+      width: 100%;
+      border: 1px dashed #eaeaea;
+      padding: 20px;
+      border-radius: 30px;
+    }
+
+    .components-item .example-before-txt {
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -0.14px;
+      cursor: pointer;
+    }
+
+    .components-item .example-before-txt:hover {
+      opacity: 0.7;
+    }
+
+    .components-item .example-before-txt.active {
+      display: none;
+    }
+
+    .components-item .example-after-txt {
+      font-size: 14px;
+      width: 100%;
+      line-height: 1.5;
+      letter-spacing: -0.14px;
+      border: 1px solid #eaeaea;
+      padding: 7px 10px;
+      resize: none;
+      outline: none;
+    }
+
+    .components-item .example-after-txt-area {
+      display: none;
+    }
+
+    .components-item .example-after-txt-area.active {
+      display: block;
+    }
+
+    .components-item .example-after-txt-area .btn-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 7px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="components-page">
+      <div class="components-item-wrap">
+        <div class="components-item">
+          <h1>출력물 문제 클릭시 수정 활성화</h1>
+          <div class="contents">
+            <div class="example-box">
+              <p class="example-before-txt">출력물 문제 예시입니다. 3줄짜리 문제입니다. 출력물 문제 예시입니다. 3줄짜리 문제입니다. 출력물 문제 예시입니다. 3줄짜리
+                문제입니다. 출력물 문제 예시입니다. 3줄짜리 문제입니다. </p>
+              <div class="example-after-txt-area">
+                <textarea
+                  class="example-after-txt">출력물 문제 예시입니다. 3줄짜리 문제입니다. 출력물 문제 예시입니다. 3줄짜리 문제입니다. 출력물 문제 예시입니다. 3줄짜리 문제입니다. 출력물 문제 예시입니다. 3줄짜리 문제입니다. </textarea>
+                <div class="btn-wrap">
+                  <button id="et-confirm-btn" type="button" class="btn btn-type10">수정완료</button>
+                  <button id="et-cancel-btn" type="button" class="btn btn-type07">취소</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/pages/project-main.js"></script>
+  <script>
+    $('.components-item .example-before-txt').on('click', function () {
+      $(this).addClass('active');
+      $(this).siblings('.components-item .example-after-txt-area').addClass('active');
+    })
+
+    $('#et-confirm-btn').on('click', function () {
+      console.log($('.example-after-txt').val());
+      $('.components-item .example-before-txt').html($('.example-after-txt').val());
+      $('.components-item .example-before-txt').removeClass('active');
+      $('.components-item .example-after-txt-area').removeClass('active');
+    })
+
+    $('#et-cancel-btn').on('click', function () {
+      $('.components-item .example-before-txt').removeClass('active');
+      $('.components-item .example-after-txt-area').removeClass('active');
+    })
+  </script>
+</body>
+
+</html>
